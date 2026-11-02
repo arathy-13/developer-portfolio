@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { gsap } from "gsap";
 import { ArrowUpRight, Menu, X, Sparkles } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
@@ -151,6 +151,79 @@ function App() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [contactStatus, setContactStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
+  const [contactFeedback, setContactFeedback] = useState("");
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setContactStatus("loading");
+    setContactFeedback("");
+
+    try {
+      const API_URL = import.meta.env.VITE_API_BASE_URL;
+
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      if (!response.ok) {
+        if (response.status === 400) {
+          throw new Error("Please check your details and try again.");
+        }
+
+        throw new Error("Something went wrong. Please try again later.");
+      }
+
+      const data = await response.json();
+
+      setContactStatus("success");
+      setContactFeedback(
+        data.message || "Your message has been sent successfully!",
+      );
+
+      setContactForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      setContactStatus("error");
+
+      setContactFeedback(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your message. Please try again.",
+      );
+    }
+  };
+
+  const handleContactChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target;
+
+    setContactForm((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+  };
 
   return (
     <>
@@ -930,12 +1003,87 @@ function App() {
                 who love building great things.
               </p>
 
-              <MagneticButton
-                href="mailto:arathy13m@gmail.com"
-                className="primary-btn contact-cta"
-              >
-                Get in touch <ArrowUpRight size={18} />
-              </MagneticButton>
+              <form className="contact-form" onSubmit={handleContactSubmit}>
+                <div className="contact-form-row">
+                  <div className="contact-field">
+                    <label htmlFor="contact-name">Your Name</label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      placeholder="Enter your name"
+                      value={contactForm.name}
+                      onChange={handleContactChange}
+                      maxLength={100}
+                      required
+                    />
+                  </div>
+
+                  <div className="contact-field">
+                    <label htmlFor="contact-email">Your Email</label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      value={contactForm.email}
+                      onChange={handleContactChange}
+                      maxLength={150}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="contact-field">
+                  <label htmlFor="contact-subject">Subject</label>
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    name="subject"
+                    placeholder="What is this regarding?"
+                    value={contactForm.subject}
+                    onChange={handleContactChange}
+                    maxLength={200}
+                    required
+                  />
+                </div>
+
+                <div className="contact-field">
+                  <label htmlFor="contact-message">Your Message</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder="Tell me about your project or opportunity..."
+                    value={contactForm.message}
+                    onChange={handleContactChange}
+                    maxLength={5000}
+                    rows={5}
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="primary-btn contact-submit"
+                  disabled={contactStatus === "loading"}
+                >
+                  {contactStatus === "loading" ? "Sending..." : "Send Message"}
+
+                  <ArrowUpRight size={18} />
+                </button>
+
+                {contactFeedback && (
+                  <p
+                    className={`contact-feedback ${
+                      contactStatus === "success" ? "success" : "error"
+                    }`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {contactFeedback}
+                  </p>
+                )}
+              </form>
             </div>
 
             <div className="contact-details">
