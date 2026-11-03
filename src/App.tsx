@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { gsap } from "gsap";
-import { ArrowUpRight, Menu, X, Sparkles } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import "./styles/globals.css";
 import Scene from "./three/Scene";
@@ -232,7 +232,7 @@ function App() {
         {/* Navigation */}
         <nav className="navbar">
           <a href="#home" className="logo" onClick={closeMenu}>
-            ARATHY<span>.M</span>
+            AR<span>.</span>
           </a>
 
           <div className={`nav-links ${menuOpen ? "active" : ""}`}>
@@ -275,19 +275,16 @@ function App() {
         <section className="hero">
           <div className="hero-content">
             <p className="hero-label">
-              <Sparkles size={15} />
               SOFTWARE ENGINEER / FULL-STACK DEVELOPER
             </p>
 
             <h1 className="hero-title">
-              Building
-              <br />
-              digital <span>experiences.</span>
+              Arathy <span>.M</span>
             </h1>
 
             <p className="hero-description">
-              Hello, I'm Arathy. I create modern, functional and engaging
-              digital experiences through thoughtful design and development.
+              Hello, I create modern, functional and engaging digital
+              experiences through thoughtful design and development.
             </p>
 
             <div className="hero-actions">
@@ -352,9 +349,9 @@ function App() {
 
             <div className="about-description">
               <p className="about-intro">
-                I'm Arathy, a Software Engineer and Full Stack Developer
-                passionate about building meaningful web applications,
-                intelligent solutions, and engaging digital experiences.
+                I'm a Software Engineer and Full Stack Developer passionate
+                about building meaningful web applications, intelligent
+                solutions, and engaging digital experiences.
               </p>
 
               <p>
@@ -1114,7 +1111,7 @@ function App() {
         <footer className="site-footer">
           <div className="footer-content">
             <a href="#home" className="footer-logo">
-              Arathy<span>.M</span>
+              AR<span>.</span>
             </a>
 
             <p>Designed & developed with curiosity and creativity.</p>
