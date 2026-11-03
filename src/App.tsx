@@ -436,6 +436,11 @@ function App() {
                 <span>HTML5</span>
                 <span>CSS3</span>
                 <span>Tailwind CSS</span>
+                <span>Vite</span>
+                <span>GSAP</span>
+                <span>Three.js</span>
+                <span>React Three Fiber</span>
+                <span>Lenis</span>
                 <span>jQuery</span>
                 <span>AJAX</span>
               </div>
@@ -454,8 +459,11 @@ function App() {
                 <span>PHP</span>
                 <span>CodeIgniter</span>
                 <span>Java</span>
-                <span>C#</span>
-                <span>.NET</span>
+                <span>Spring Boot</span>
+                <span>Spring Data JPA</span>
+                <span>Hibernate</span>
+                <span>Maven</span>
+                <span>Bean Validation</span>
                 <span>Python</span>
                 <span>REST API Integration</span>
                 <span>MVC Architecture</span>
@@ -481,6 +489,7 @@ function App() {
                 <span>NoSQL</span>
                 <span>Database Design</span>
                 <span>SQL</span>
+                <span>Neon Database</span>
               </div>
             </div>
 
@@ -502,8 +511,9 @@ function App() {
                 <span>Jaspersoft Studio</span>
                 <span>Jaspersoft Server</span>
                 <span>Crystal Reports</span>
-                <span>BI Reporting</span>
-                <span>PDF Processing</span>
+                <span>Docker</span>
+                <span>Vercel</span>
+                <span>Render</span>
                 <span>Git</span>
                 <span>GitHub</span>
                 <span>Jira</span>
