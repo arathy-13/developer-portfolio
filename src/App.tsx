@@ -1102,13 +1102,13 @@ function App() {
                 </a>
               </div>
 
-              <div className="contact-detail-card">
+              {/* <div className="contact-detail-card">
                 <span className="contact-detail-label">PHONE</span>
                 <a href="tel:+917561009266">
                   +91 7561009266
                   <ArrowUpRight size={16} />
                 </a>
-              </div>
+              </div> */}
 
               <div className="contact-detail-card">
                 <span className="contact-detail-label">LOCATION</span>
