@@ -232,7 +232,7 @@ function App() {
         {/* Navigation */}
         <nav className="navbar">
           <a href="#home" className="logo" onClick={closeMenu}>
-            AR<span>.</span>
+            Arathy<span>.</span>
           </a>
 
           <div className={`nav-links ${menuOpen ? "active" : ""}`}>
@@ -362,10 +362,9 @@ function App() {
               </p>
 
               <p>
-                Currently, I'm contributing to application development at Achyut
-                Inspire Technology and Solutions (AITS), working with React,
-                TypeScript, PostgreSQL, and reporting technologies such as
-                JasperReports.
+                I've contributed to application development at Achyut Inspire
+                Technology and Solutions (AITS), working with React, TypeScript,
+                PostgreSQL, and reporting technologies such as JasperReports.
               </p>
 
               <p>
@@ -1121,7 +1120,7 @@ function App() {
         <footer className="site-footer">
           <div className="footer-content">
             <a href="#home" className="footer-logo">
-              AR<span>.</span>
+              Arathy<span>.</span>
             </a>
 
             <p>Designed & developed with curiosity and creativity.</p>
